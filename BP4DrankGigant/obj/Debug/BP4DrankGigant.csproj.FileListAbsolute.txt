@@ -1,0 +1,6 @@
+c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\bin\BP4DrankGigant.dll.config
+c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\bin\BP4DrankGigant.dll
+c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\bin\BP4DrankGigant.pdb
+c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\obj\Debug\BP4DrankGigant.csprojResolveAssemblyReference.cache
+c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\obj\Debug\BP4DrankGigant.dll
+c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\obj\Debug\BP4DrankGigant.pdb
