@@ -79,7 +79,8 @@
         </nav>
       </header>
             <section class="inhoud">
-                jajajjjaj
+                Hier komt de inhoud van de pagina..
+                <asp:Panel ID="Panel1" runat="server" BorderStyle="Solid" BorderWidth="1px" Height="920" Width="700">fdfdf</asp:Panel>
             </section>
       <footer>Drankgigant &emsp; Door Stan Wulms©</footer>
     </div>
