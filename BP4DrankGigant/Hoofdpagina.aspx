@@ -2,5 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    dinges oproepen in hoofdpagina
+    <link href="StyleSheet.css" rel="stylesheet" />
+                <section class="inhoud">
+                
+                <asp:Panel ID="Panel1" runat="server" BorderStyle="Solid" BorderWidth="1px" Height="920" Width="700">
+                    <div id="links">
+                        asfasdf
+                    </div>
+                    <div id="rechts">
+                        adsfasfasdf
+                    </div>
+                </asp:Panel>
+            </section>
 </asp:Content>

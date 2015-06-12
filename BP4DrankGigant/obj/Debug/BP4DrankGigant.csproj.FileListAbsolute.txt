@@ -4,3 +4,4 @@ c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigan
 c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\obj\Debug\BP4DrankGigant.csprojResolveAssemblyReference.cache
 c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\obj\Debug\BP4DrankGigant.dll
 c:\users\stan\documents\visual studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\obj\Debug\BP4DrankGigant.pdb
+C:\Users\Stan\Documents\Visual Studio 2013\Projects\BP4DrankGigant\BP4DrankGigant\bin\Oracle.ManagedDataAccess.dll

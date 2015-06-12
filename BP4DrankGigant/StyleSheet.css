@@ -165,5 +165,18 @@ section.inhoud {
   margin-left: 5px;
   padding-left:10px;
   margin-right: 5px;
-  background-color:green;
+}
+#links{
+    background-color:red;
+    display:inline-block;
+    height: 200px;
+    width: 180px;
+    margin: 10px 10px 10px 10px;
+}
+#rechts{
+    background-color:yellow;
+    display:inline-block;
+    height: 200px;
+    width: 180px;
+    margin: 10px 10px 10px 10px;
 }

@@ -4,17 +4,48 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="StyleSheet.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+     <div class="wrapper">
+      <header style="background-color:#B22222;">
+         <div class="headerbar">
+            <ul>
+                <li><a>Mijn verlanglijst</a></li>
+                <li><a>Inloggen</a></li>
+                <li><a>Afrekenen</a></li>
+            </ul>
+         </div>
+                  <h1>  </h1>
+        <div class="pic">
+            <!-- Div voor het plaatje, deze staat in de Css File -->
+        </div>
+ 
+
+        <nav>
+        <ul>
+            <li><a> Drank</a></li>
+            <li><a>Frisdranken</a>
+                <ul>
+                    <li><a>Fanta</a></li>
+                    <li><a>Coca Cola</a></li>
+                </ul>
+            </li>
+            <li><a>Lichte</a></li>
+        </ul>
+        </nav>
+      </header>
+         
+        <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
+
         </asp:ContentPlaceHolder>
     </div>
+         <footer>Drankgigant &emsp; Door Stan Wulms©</footer>
     </form>
 </body>
 </html>

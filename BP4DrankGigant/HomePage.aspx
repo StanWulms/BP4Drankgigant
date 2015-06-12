@@ -22,48 +22,7 @@
         <div class="pic">
             <!-- Div voor het plaatje, deze staat in de Css File -->
         </div>
-          <asp:menu id="NavigationMenu"
-        staticdisplaylevels="2"
-        staticsubmenuindent="10" 
-        orientation="Horizontal"
-        dynamichorizontaloffset="10"
-        target="_blank"  
-        runat="server">
-
-        <items>
-          <asp:menuitem navigateurl="Home.aspx" 
-            text="Home"
-            tooltip="Home">
-            <asp:menuitem navigateurl="Music.aspx"
-              text="Music"
-              tooltip="Music">
-              <asp:menuitem navigateurl="Classical.aspx" 
-                text="Classical"
-                tooltip="Classical"/>
-              <asp:menuitem navigateurl="Rock.aspx"
-                text="Rock"
-                tooltip="Rock"/>
-              <asp:menuitem navigateurl="Jazz.aspx"
-                text="Jazz"
-                tooltip="Jazz"/>
-            </asp:menuitem>
-            <asp:menuitem navigateurl="Movies.aspx"
-              text="Movies"
-              tooltip="Movies">
-              <asp:menuitem navigateurl="Action.aspx"
-                text="Action"
-                tooltip="Action"/>
-              <asp:menuitem navigateurl="Drama.aspx"
-                text="Drama"
-                tooltip="Drama"/>
-              <asp:menuitem navigateurl="Musical.aspx"
-                text="Musical"
-                tooltip="Musical"/>
-            </asp:menuitem>
-          </asp:menuitem>
-        </items>
-
-      </asp:menu>
+ 
 
         <nav>
         <ul>
@@ -80,7 +39,14 @@
       </header>
             <section class="inhoud">
                 Hier komt de inhoud van de pagina..
-                <asp:Panel ID="Panel1" runat="server" BorderStyle="Solid" BorderWidth="1px" Height="920" Width="700">fdfdf</asp:Panel>
+                <asp:Panel ID="Panel1" runat="server" BorderStyle="Solid" BorderWidth="1px" Height="920" Width="700">
+                    <div id="links">
+                        asfasdf
+                    </div>
+                    <div id="rechts">
+                        adsfasfasdf
+                    </div>
+                </asp:Panel>
             </section>
       <footer>Drankgigant &emsp; Door Stan Wulms©</footer>
     </div>
