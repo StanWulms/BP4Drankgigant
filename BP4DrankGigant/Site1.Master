@@ -16,7 +16,7 @@
          <div class="headerbar">
             <ul>
                 <li><a>Mijn verlanglijst</a></li>
-                <li><a>Inloggen</a></li>
+                <li><a href="Inloggen.aspx">Inloggen</a></li>
                 <li><a>Afrekenen</a></li>
             </ul>
          </div>
@@ -28,8 +28,14 @@
 
         <nav>
         <ul>
-            <li><a> Drank</a></li>
-            <li><a>Frisdranken</a>
+            <li><a> Sterke Dranken</a></li>
+                <ul>
+                    <li>Absint</li>
+                    <li>Anijs</li>
+                    <li>Brandy</li>
+                    <li>Wodka</li>
+                </ul>
+            <li><a>Alcohol Vrij</a>
                 <ul>
                     <li><a>Fanta</a></li>
                     <li><a>Coca Cola</a></li>
@@ -38,6 +44,7 @@
             <li><a>Lichte</a></li>
         </ul>
         </nav>
+          <div id="contentDiv" runat="server"></div>
       </header>
          
         <div>

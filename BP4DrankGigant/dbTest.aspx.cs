@@ -10,12 +10,11 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace BP4DrankGigant
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class dbTest : System.Web.UI.Page
     {
-        List<Categorie> categorieen = new List<Categorie>();
         protected void Page_Load(object sender, EventArgs e)
         {
-          /*  using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
+            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
             {
                 if (con == null)
                 {
@@ -33,32 +32,20 @@ namespace BP4DrankGigant
                 DbDataReader reader = com.ExecuteReader();
                 try
                 {
-                    contentDiv.InnerHtml = "<div id=" + "catlijst" + "><ul class=" + "catlist" + ">";
-
+                    //dropdownmenu
+                    // lbItems.Items.Clear();
+                    ListBox1.Items.Clear();
                     while (reader.Read())
                     {
-                        Categorie c = new Categorie(reader.GetString(0));
-                        categorieen.Add(c);
+                        //   lbItems.Items.Add(reader[0].ToString());
+                        ListBox1.Items.Add(reader[0].ToString());
                     }
-
-                    foreach (Categorie cat in categorieen)
-                    {
-                        contentDiv.InnerHtml += "<li>" + cat.Naam + "<ul class=" + "catlist" + ">";
-                        com.CommandText = "SELECT categorienaam FROM categorie WHERE supercategorienaam =" + cat.Naam + ";";
-                        DbDataReader readerr = com.ExecuteReader();
-                        while (readerr.Read())
-                        {
-                            contentDiv.InnerHtml += "<li><a class=" + "catolist" + " href=" + "Subcategorie.aspx" + ">" + readerr.GetString(0) + "</li>";
-                        }
-                        contentDiv.InnerHtml += "</ul></li>";
-                    }
-                    contentDiv.InnerHtml += "</ul></div>";
                 }
                 catch (NullReferenceException)
                 {
 
                 }
-            }*/
+            }
         }
     }
 }

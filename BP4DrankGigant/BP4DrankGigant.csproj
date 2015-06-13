@@ -62,18 +62,56 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dbTest.aspx" />
     <Content Include="Hoofdpagina.aspx" />
+    <Content Include="Inloggen.aspx" />
+    <Content Include="Producten.aspx" />
+    <Content Include="ProductInformatie.aspx" />
     <Content Include="StyleSheet.css" />
+    <Content Include="SubCategorie.aspx" />
     <Content Include="Web.config" />
     <Content Include="HomePage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="Bestelling.cs" />
+    <Compile Include="Categorie.cs" />
+    <Compile Include="dbTest.aspx.cs">
+      <DependentUpon>dbTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dbTest.aspx.designer.cs">
+      <DependentUpon>dbTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Hoofdpagina.aspx.cs">
       <DependentUpon>Hoofdpagina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Hoofdpagina.aspx.designer.cs">
       <DependentUpon>Hoofdpagina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inloggen.aspx.cs">
+      <DependentUpon>Inloggen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inloggen.aspx.designer.cs">
+      <DependentUpon>Inloggen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs" />
+    <Compile Include="Producten.aspx.cs">
+      <DependentUpon>Producten.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Producten.aspx.designer.cs">
+      <DependentUpon>Producten.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductInformatie.aspx.cs">
+      <DependentUpon>ProductInformatie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductInformatie.aspx.designer.cs">
+      <DependentUpon>ProductInformatie.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HomePage.aspx.cs">
@@ -90,6 +128,14 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="SubCategorie.aspx.cs">
+      <DependentUpon>SubCategorie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubCategorie.aspx.designer.cs">
+      <DependentUpon>SubCategorie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubCategoriee.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
