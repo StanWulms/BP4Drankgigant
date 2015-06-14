@@ -22,8 +22,56 @@ namespace BP4DrankGigant
         protected void Page_Load(object sender, EventArgs e)
         {
             string product = (string)Session["Product"];
+            p = new Product();
+            p.getProductInfo();
 
-            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
+            ImageButton img = new ImageButton();
+            img.ID = "img";
+            img.AlternateText = "ImageButton";
+            img.ImageUrl = "~/Images/" + product + ".jpg";
+            Panel1.Controls.Add(img);
+
+            foreach (Product pr in p.producteninfo)
+            {
+                Label labelNaam = new Label();
+                labelNaam.Text = "<br /> " + "Naam: " + pr.Naam + "<br /><br />";
+                labelNaam.ID = p.Naam + ".";
+                Panel1.Controls.Add(labelNaam);
+
+                Label labelInhoud = new Label();
+                labelInhoud.Text = "Inhoud: " + pr.Inhoud + "<br /><br />";
+                labelInhoud.ID = p.Inhoud;
+                Panel1.Controls.Add(labelInhoud);
+
+                Label labelAlcoholpercentage = new Label();
+                labelAlcoholpercentage.Text = "Alcohol Percentage: " + pr.Alcoholpercentage + "<br /><br />";
+                labelAlcoholpercentage.ID = p.Alcoholpercentage;
+                Panel1.Controls.Add(labelAlcoholpercentage);
+
+                Label labelMerk = new Label();
+                labelMerk.Text = "Merk: " + pr.Merk + "<br /><br />";
+                labelMerk.ID = p.Merk;
+                Panel1.Controls.Add(labelMerk);
+
+                Label labelLand = new Label();
+                labelLand.Text = "Land: " + pr.Land + "<br /><br />";
+                labelLand.ID = p.Land;
+                Panel1.Controls.Add(labelLand);
+
+                Label labelPrijs = new Label();
+                labelPrijs.Text = "Prijs: €" + pr.Prijs + "<br /><br />";
+                labelPrijs.ID = p.Prijs.ToString();
+                Panel1.Controls.Add(labelPrijs);
+            }
+           
+            ImageButton WinkelWagenIMG = new ImageButton();
+            WinkelWagenIMG.ID = "WinkelWagenIMG";
+            WinkelWagenIMG.AlternateText = "ImagButton";
+            WinkelWagenIMG.ImageUrl = "~/Images/WinkelWagen.jpg";
+            WinkelWagenIMG.Click += new ImageClickEventHandler(WinkelWagenIMG_Click);
+            Panel1.Controls.Add(WinkelWagenIMG); 
+
+            /*using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
             {
                 if (con == null)
                 {
@@ -54,17 +102,6 @@ namespace BP4DrankGigant
                     while (reader.Read())
                     {
 
-                     /*   Button ButtonChange = new Button();
-                        ButtonChange.Height = 100;
-                        ButtonChange.Width = 100;
-
-                        ButtonChange.Text = reader[0].ToString();
-                        ButtonChange.ID = reader[0].ToString();
-                        ButtonChange.Font.Size = FontUnit.Point(7);
-                        ButtonChange.ControlStyle.CssClass = "button";
-                        ButtonChange.Click += new EventHandler(btn_Click);
-
-                        Panel1.Controls.Add(ButtonChange);*/
 
                         Label labelNaam = new Label();
                         labelNaam.Text = "<br /> " + "Naam: " + reader[0].ToString() + "<br /><br />";
@@ -114,7 +151,7 @@ namespace BP4DrankGigant
                 {
 
                 }
-            }
+            }*/
         }
     /*    public void btn_Click(object sender, EventArgs e)
         {
@@ -125,11 +162,7 @@ namespace BP4DrankGigant
         }*/
         protected void WinkelWagenIMG_Click(object sender, ImageClickEventArgs e)
         {
-            /*
-            ww = new Winkelwagen();
-           // ww.winkelwagenproducten.Add(p);
-            ww.ToevoegenAanWinkelwagen(p);
-            Response.Redirect("WinkelWagen.aspx");*/
+
             using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
             {
                 if (con == null)
@@ -148,25 +181,29 @@ namespace BP4DrankGigant
                 OracleCommand cmd = (OracleCommand)con.CreateCommand();
                 try
                 {
-                    string lijstID = h.getLijstID("SELECT * FROM LIJST WHERE email ='" + Session["Username"] + "' AND lijsttype = 'Winkelwagen'");
-                    Session["Lijst"] = lijstID;
-                    OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
-                    cmd.CommandText = "INSERT INTO PRODUCTLIJST (productnaam, lijstID, aantal) VALUES ('"+ (String)Session["Product"] + "','" + (String)Session["Lijst"] + "','" + "1" + "')";
-                    try
+                    if((String)Session["Inlog"] == "Y")
                     {
-                        cmd.ExecuteNonQuery();
-                    }catch(OracleException ex)
-                    {
-                        if (ex.Message.Contains("UniqueConstraint"))
+                        string lijstID = h.getLijstID("SELECT * FROM LIJST WHERE email ='" + Session["Username"] + "' AND lijsttype = 'Winkelwagen'");
+                        Session["Lijst"] = lijstID;
+                        OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
+                        cmd.CommandText = "INSERT INTO PRODUCTLIJST (productnaam, lijstID, aantal) VALUES ('" + (String)Session["Product"] + "','" + (String)Session["Lijst"] + "','" + "1" + "')";
+                        try
                         {
-                            Response.Redirect("Hoofdpagina.aspx");
+                            cmd.ExecuteNonQuery();
                         }
+                        catch (OracleException ex)
+                        {
+                            if (ex.Message.Contains("UniqueConstraint"))
+                            {
+                                Response.Redirect("Hoofdpagina.aspx");
+                            }
+                        }
+                        otn.Commit();
                     }
-                    otn.Commit();
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
+                    else
+                    {
 
-
+                    }
                 }
                 catch (NullReferenceException)
                 {

@@ -14,12 +14,28 @@ namespace BP4DrankGigant
 {
     public partial class Producten : System.Web.UI.Page
     {
-        List<Product> producten = new List<Product>();
+        Product p;
         protected void Page_Load(object sender, EventArgs e)
         {
             string subcategorieID = (string)Session["subcategorie"];
+            p = new Product();
+            p.getProduct();
+            foreach (Product pr in p.producten)
+            {
+                        Button ButtonChange = new Button();
+                        ButtonChange.Height = 100;
+                        ButtonChange.Width = 100;
 
-            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
+                        ButtonChange.Text = pr.Naam;
+                        ButtonChange.ID = pr.Naam;
+                        ButtonChange.Font.Size = FontUnit.Point(7);
+                        ButtonChange.ControlStyle.CssClass = "button";
+                        ButtonChange.Click += new EventHandler(btn_Click);
+                        
+                        Panel1.Controls.Add(ButtonChange);
+            }
+
+           /* using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
             {
                 if (con == null)
                 {
@@ -65,7 +81,7 @@ namespace BP4DrankGigant
                 {
 
                 }
-            }
+            }*/
         }
         public void btn_Click(object sender, EventArgs e)
         {

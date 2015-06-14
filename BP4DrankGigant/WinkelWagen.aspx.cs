@@ -15,11 +15,14 @@ namespace BP4DrankGigant
     {
         Winkelwagen winkelwagen = new Winkelwagen();
         List<Product> winkelwagenlijst;
+        Helper h = new Helper();
         
         protected void Page_Load(object sender, EventArgs e)
         {
             if ((String)Session["Inlog"] == "Y")
             {
+                string lijstID = h.getLijstID("SELECT * FROM LIJST WHERE email ='" + Session["Username"] + "' AND lijsttype = 'Winkelwagen'");
+                Session["Lijst"] = lijstID;
                 using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
                 {
                     if (con == null)
