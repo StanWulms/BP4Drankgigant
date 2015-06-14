@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Common;
+using System.Configuration;
+using Oracle.ManagedDataAccess.Client;
 
 namespace BP4DrankGigant
 {
@@ -14,14 +18,40 @@ namespace BP4DrankGigant
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            winkelwagen.winkelwagenproducten = new List<Product>();
-            winkelwagenlijst = new List<Product>();
-            foreach (Product pro in winkelwagen.winkelwagenproducten)
+            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
             {
-                Label labelPrijs = new Label();
-                labelPrijs.Text = "Prijs: €" + "123123123123131313"  + "<br /><br />";
-                labelPrijs.ID = "123123";
-                Panel1.Controls.Add(labelPrijs);
+                if (con == null)
+                {
+                    //return "Error! No Connection";
+                }
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
+                con.Open();
+                DbCommand com = OracleClientFactory.Instance.CreateCommand();
+                if (com == null)
+                {
+                    //return "Error! No Command";
+                }
+                com.Connection = con;
+                com.CommandText = "SELECT productnaam FROM PRODUCTLIJST WHERE lijstID = '" + (String)Session["Lijst"] + "'";
+                DbDataReader reader = com.ExecuteReader();
+                try
+                {
+                    //dropdownmenu
+                    // lbItems.Items.Clear();
+
+                    while (reader.Read())
+                    {
+                        Label labelNaam = new Label();
+                        labelNaam.Text = "<br /> " + "Product: " + reader[0].ToString() + "<br /><br />";
+                        labelNaam.ID = reader[0].ToString();
+                        Panel1.Controls.Add(labelNaam);
+
+                    }
+                }
+                catch (NullReferenceException)
+                {
+
+                }
             }
         }
     }

@@ -14,9 +14,11 @@ namespace BP4DrankGigant
     public partial class Inloggen : System.Web.UI.Page
     {
         Account a;
+        Helper h = new Helper();
         List<Account> accounts = new List<Account>();
         string gebruikersnaam;
         string wachtwoord;
+        int maxid;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -73,7 +75,7 @@ namespace BP4DrankGigant
                         //return "Error! No Command";
                     }
                     com.Connection = con;
-                    com.CommandText = "SELECT * FROM Account";
+                  //  com.CommandText = "SELECT * FROM Account";
                     OracleCommand cmd = (OracleCommand)con.CreateCommand();
                     try
                     {
@@ -81,8 +83,16 @@ namespace BP4DrankGigant
                         cmd.CommandText = "INSERT INTO ACCOUNT (Email,Titel,Voornaam,Achternaam,Btwnummer,Wachtwoord,Nieuwsbrief) VALUES ('" + tbEmail.Text + "','" + ddlTitel.SelectedValue + "','" + tbVoornaam.Text + "','" + tbAchternaam.Text + "','" + "NL12349921" + "','" + tbWachtwoord.Text + "','" + rbNieuwsbrief.SelectedValue + "')";
                         cmd.ExecuteNonQuery();
                         otn.Commit();
+                        
+                        maxid = h.getMaXID("SELECT COUNT(LijstID) FROM LIJST");
+                        OracleTransaction otn2 = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
+                        cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + maxid.ToString() + "','" + tbEmail.Text + "','" + "Winkelwagen" + "')";
+                        cmd.ExecuteNonQuery();
+                        otn2.Commit();
                         //dropdownmenu
                         // lbItems.Items.Clear();
+
+                        Session["Inlog"] = "Y";
 
 
                     }

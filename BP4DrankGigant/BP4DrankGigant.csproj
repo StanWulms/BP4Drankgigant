@@ -69,6 +69,7 @@
     <Content Include="ProductInformatie.aspx" />
     <Content Include="StyleSheet.css" />
     <Content Include="SubCategorie.aspx" />
+    <Content Include="Uitloggen.aspx" />
     <Content Include="Web.config" />
     <Content Include="HomePage.aspx" />
     <Content Include="WinkelWagen.aspx" />
@@ -138,6 +139,13 @@
       <DependentUpon>SubCategorie.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubCategoriee.cs" />
+    <Compile Include="Uitloggen.aspx.cs">
+      <DependentUpon>Uitloggen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Uitloggen.aspx.designer.cs">
+      <DependentUpon>Uitloggen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WinkelWagen.aspx.cs">
       <DependentUpon>WinkelWagen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

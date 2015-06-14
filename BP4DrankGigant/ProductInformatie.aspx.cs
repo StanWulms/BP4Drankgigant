@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,6 +15,7 @@ namespace BP4DrankGigant
 {
     public partial class ProductInformatieaspx : System.Web.UI.Page
     {
+        Helper h = new Helper();
         List<Product> winkellijst;
         Product p;
         Winkelwagen ww;
@@ -123,9 +125,61 @@ namespace BP4DrankGigant
         }*/
         protected void WinkelWagenIMG_Click(object sender, ImageClickEventArgs e)
         {
+            /*
             ww = new Winkelwagen();
            // ww.winkelwagenproducten.Add(p);
             ww.ToevoegenAanWinkelwagen(p);
+            Response.Redirect("WinkelWagen.aspx");*/
+            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
+            {
+                if (con == null)
+                {
+                    //return "Error! No Connection";
+                }
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
+                con.Open();
+                DbCommand com = OracleClientFactory.Instance.CreateCommand();
+                if (com == null)
+                {
+                    //return "Error! No Command";
+                }
+                com.Connection = con;
+                com.CommandText = "SELECT * FROM LIJST";
+                OracleCommand cmd = (OracleCommand)con.CreateCommand();
+                try
+                {
+                    string lijstID = h.getLijstID("SELECT * FROM LIJST WHERE email ='" + Session["Username"] + "' AND lijsttype = 'Winkelwagen'");
+                    Session["Lijst"] = lijstID;
+                    OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
+                    cmd.CommandText = "INSERT INTO PRODUCTLIJST (productnaam, lijstID, aantal) VALUES ('"+ (String)Session["Product"] + "','" + (String)Session["Lijst"] + "','" + "1" + "')";
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }catch(OracleException ex)
+                    {
+                        if (ex.Message.Contains("UniqueConstraint"))
+                        {
+                            Response.Redirect("Hoofdpagina.aspx");
+                        }
+                    }
+                    otn.Commit();
+                    //dropdownmenu
+                    // lbItems.Items.Clear();
+
+
+                }
+                catch (NullReferenceException)
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('U dient eerst in te loggen.');</script>");
+                }
+                catch(DuplicateNameException)
+                {
+                    OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
+                    cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + (1+1).ToString() + "','" + (String)Session["Username"] + "','" + "Winkelwagen" + "')";
+                    cmd.ExecuteNonQuery();
+                    otn.Commit();
+                }
+            }
             Response.Redirect("WinkelWagen.aspx");
         }
         
