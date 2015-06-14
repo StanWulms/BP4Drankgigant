@@ -25,7 +25,7 @@ namespace BP4DrankGigant
                 labelNaam.ID = user;
                 form1.Controls.Add(labelNaam);
                // headbar.InnerHtml += "<ul><li>U bent ingelogd.</li></ul>";
-                headbar.InnerHtml = "<ul><li>U bent ingelogd</li><li><a>Mijn verlanglijst</a></li><li><a href=" + "Uitloggen.aspx" + ">Uitloggen</a></li><li><a>Afrekenen</a></li></ul>";
+                headbar.InnerHtml = "<ul><li>U bent ingelogd</li><li><a href=" + "Winkelwagen.aspx" + ">Winkelwagen</a></li><li><a href=" + "Uitloggen.aspx" + ">Uitloggen</a></li><li><a>Afrekenen</a></li></ul>";
             
             }
             else
@@ -33,7 +33,7 @@ namespace BP4DrankGigant
                 Session["Inlog"] = "N";
                 Session["User"] = "";
                 Session["Password"] = "";
-                headbar.InnerHtml = "<ul><li><a>Mijn verlanglijst</a></li><li><a href=" + "Inloggen.aspx" + ">Inloggen</a></li><li><a>Afrekenen</a></li></ul>";
+                headbar.InnerHtml = "<ul><li><a href=" + "Winkelwagen.aspx" + ">Winkelwagen</a></li><li><a href=" + "Inloggen.aspx" + ">Inloggen</a></li><li><a>Afrekenen</a></li></ul>";
             
             }
 

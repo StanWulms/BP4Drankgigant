@@ -56,7 +56,7 @@ namespace BP4DrankGigant
                     /// 
                    // maxid = Convert.ToInt32(reader.GetString(0));
                     maxid = reader.GetInt32(0);
-                   // maxid++;
+                    maxid++;
                     reader.Close();
                     return maxid;
                     

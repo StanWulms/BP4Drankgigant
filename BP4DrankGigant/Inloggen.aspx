@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <link href="StyleSheet.css" rel="stylesheet" />
+    
                 <section class="inhoud">
                     <div id="AccountMaken">
                         <asp:Label ID="lblTitel" runat="server" Text="Titel: "></asp:Label>
@@ -23,7 +24,10 @@
                          <br /><br />
                         <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>
                         <br /><br />
-                        <asp:TextBox ID="tbEmail" runat="server"></asp:TextBox>
+                        
+                        <asp:TextBox ID="tbEmail" runat="server" ValidateRequestMode="Enabled"></asp:TextBox>
+                        
+
                          <br /><br />
                         <asp:Label ID="lblWachtwoord" runat="server" Text="Wachtwoord: "></asp:Label>
                         <br /><br />
@@ -36,10 +40,10 @@
                         <asp:Label ID="lblNieuwsbrief" runat="server" Text="Nieuwsbrief: "></asp:Label>
                         <asp:RadioButtonList ID="rbNieuwsbrief" runat="server">
                             <asp:ListItem>Ja</asp:ListItem>
-                            <asp:ListItem>Nee</asp:ListItem>
+                            <asp:ListItem Selected="True">Nee</asp:ListItem>
                         </asp:RadioButtonList>
                         <br /><br />
-                        <asp:Button ID="btnAccountMaken" runat="server" Text="Maak Account" OnClick="btnAccountMaken_Click" />
+                        <asp:Button ID="btnAccountMaken" runat="server" Text="Maak Account" OnClick="btnAccountMaken_Click" ValidationGroup="AllValidators" />
                     </div>
                     <div id="AccountInloggen">
                         <asp:Label ID="lblInlogEmail" runat="server" Text="Email: "></asp:Label>

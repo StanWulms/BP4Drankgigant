@@ -15,7 +15,7 @@
       <header style="background-color:#B22222;">
          <div id="headbar" class="headerbar" runat="server">
             <ul>
-                <li><a>Mijn verlanglijst</a></li>
+                <li><a href="Winkelwagen.aspx">Winkelwagen</a></li>
                 <li><a href="Inloggen.aspx">Inloggen</a></li>
                 <li><a>Afrekenen</a></li>
             </ul>
@@ -44,10 +44,10 @@
             </li>
             <li><a>Lichte</a></li>
         </ul>
-        </nav>
+        </nav> 
           <div id="contentDiv" runat="server"></div>
       </header>
-         
+        
         <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 

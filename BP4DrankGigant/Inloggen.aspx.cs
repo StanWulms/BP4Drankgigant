@@ -46,6 +46,7 @@ namespace BP4DrankGigant
                     while (reader.Read())
                     {
                         a = new Account(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+                        //a.accounts.Add(a);
                         accounts.Add(a);
 
                     }
@@ -59,54 +60,71 @@ namespace BP4DrankGigant
 
         protected void btnAccountMaken_Click(object sender, EventArgs e)
         {
-            if (tbWachtwoord.Text == tbReWachtwoord.Text)
+            if (Page.IsValid)
             {
-                using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
+            
+            a.Aanmaken(tbEmail.Text, ddlTitel.SelectedValue, tbVoornaam.Text, tbAchternaam.Text, "NL1324576809", tbWachtwoord.Text, tbReWachtwoord.Text, rbNieuwsbrief.SelectedValue);
+            Session["Inlog"] = "Y";
+            Response.Redirect("Hoofdpagina.aspx");
+                    /*if (tbWachtwoord.Text == tbReWachtwoord.Text)
                 {
-                    if (con == null)
+                    using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
                     {
-                        //return "Error! No Connection";
-                    }
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
-                    con.Open();
-                    DbCommand com = OracleClientFactory.Instance.CreateCommand();
-                    if (com == null)
-                    {
-                        //return "Error! No Command";
-                    }
-                    com.Connection = con;
-                  //  com.CommandText = "SELECT * FROM Account";
-                    OracleCommand cmd = (OracleCommand)con.CreateCommand();
-                    try
-                    {
-                        OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
-                        cmd.CommandText = "INSERT INTO ACCOUNT (Email,Titel,Voornaam,Achternaam,Btwnummer,Wachtwoord,Nieuwsbrief) VALUES ('" + tbEmail.Text + "','" + ddlTitel.SelectedValue + "','" + tbVoornaam.Text + "','" + tbAchternaam.Text + "','" + "NL12349921" + "','" + tbWachtwoord.Text + "','" + rbNieuwsbrief.SelectedValue + "')";
-                        cmd.ExecuteNonQuery();
-                        otn.Commit();
-                        
-                        maxid = h.getMaXID("SELECT COUNT(LijstID) FROM LIJST");
-                        OracleTransaction otn2 = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
-                        cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + maxid.ToString() + "','" + tbEmail.Text + "','" + "Winkelwagen" + "')";
-                        cmd.ExecuteNonQuery();
-                        otn2.Commit();
-                        //dropdownmenu
-                        // lbItems.Items.Clear();
+                        if (con == null)
+                        {
+                            //return "Error! No Connection";
+                        }
+                        con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
+                        con.Open();
+                        DbCommand com = OracleClientFactory.Instance.CreateCommand();
+                        if (com == null)
+                        {
+                            //return "Error! No Command";
+                        }
+                        com.Connection = con;
+                        //  com.CommandText = "SELECT * FROM Account";
+                        OracleCommand cmd = (OracleCommand)con.CreateCommand();
+                        try
+                        {
+                            OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
+                            cmd.CommandText = "INSERT INTO ACCOUNT (Email,Titel,Voornaam,Achternaam,Btwnummer,Wachtwoord,Nieuwsbrief) VALUES ('" + tbEmail.Text + "','" + ddlTitel.SelectedValue + "','" + tbVoornaam.Text + "','" + tbAchternaam.Text + "','" + "NL12349921" + "','" + tbWachtwoord.Text + "','" + rbNieuwsbrief.SelectedValue + "')";
+                            cmd.ExecuteNonQuery();
+                            otn.Commit();
 
-                        Session["Inlog"] = "Y";
+                            maxid = h.getMaXID("SELECT COUNT(LijstID) FROM LIJST");
+                            OracleTransaction otn2 = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
+                            cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + maxid.ToString() + "','" + tbEmail.Text + "','" + "Winkelwagen" + "')";
+                            cmd.ExecuteNonQuery();
+                            otn2.Commit();
+                            //dropdownmenu
+                            // lbItems.Items.Clear();
+
+                            Session["Inlog"] = "Y";
 
 
+                        }
+                        catch (NullReferenceException)
+                        {
+
+                        }
                     }
-                    catch (NullReferenceException)
-                    {
-
-                    }
+                    
+                    Response.Redirect("Hoofdpagina.aspx");
                 }
-                Response.Redirect("Hoofdpagina.aspx");
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Wachtwoorden komen niet overeen!');</script>");
+                }*/
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Vul een valide email in.');</script>");
             }
         }
 
         protected void btnInloggen_Click(object sender, EventArgs e)
         {
+            //Het is hier niet mogelijk om SQL-injections te krijgen, omdat ik de list vergelijk met het ingevulde.
             //Roep de methode van de klasse Account aan ipv dit.
             gebruikersnaam = tbInlogEmail.Text;
             wachtwoord = tbInlogWachtwoord.Text;

@@ -18,40 +18,49 @@ namespace BP4DrankGigant
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
+            if ((String)Session["Inlog"] == "Y")
             {
-                if (con == null)
+                using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
                 {
-                    //return "Error! No Connection";
-                }
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
-                con.Open();
-                DbCommand com = OracleClientFactory.Instance.CreateCommand();
-                if (com == null)
-                {
-                    //return "Error! No Command";
-                }
-                com.Connection = con;
-                com.CommandText = "SELECT productnaam FROM PRODUCTLIJST WHERE lijstID = '" + (String)Session["Lijst"] + "'";
-                DbDataReader reader = com.ExecuteReader();
-                try
-                {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
-
-                    while (reader.Read())
+                    if (con == null)
                     {
-                        Label labelNaam = new Label();
-                        labelNaam.Text = "<br /> " + "Product: " + reader[0].ToString() + "<br /><br />";
-                        labelNaam.ID = reader[0].ToString();
-                        Panel1.Controls.Add(labelNaam);
+                        //return "Error! No Connection";
+                    }
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
+                    con.Open();
+                    DbCommand com = OracleClientFactory.Instance.CreateCommand();
+                    if (com == null)
+                    {
+                        //return "Error! No Command";
+                    }
+                    com.Connection = con;
+                    com.CommandText = "SELECT productnaam FROM PRODUCTLIJST WHERE lijstID = '" + (String)Session["Lijst"] + "'";
+                    DbDataReader reader = com.ExecuteReader();
+                    try
+                    {
+                        //dropdownmenu
+                        // lbItems.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            Label labelNaam = new Label();
+                            labelNaam.Text = "<br /> " + "Product: " + reader[0].ToString() + "<br /><br />";
+                            labelNaam.ID = reader[0].ToString();
+                            Panel1.Controls.Add(labelNaam);
+
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
 
                     }
                 }
-                catch (NullReferenceException)
-                {
-
-                }
+            }
+            else
+            {
+                Label labelFout = new Label();
+                labelFout.Text = "<br /><br />" + "U dient in te loggen om de winkelwagen te kunnen zien.";
+                Panel1.Controls.Add(labelFout);
             }
         }
     }
