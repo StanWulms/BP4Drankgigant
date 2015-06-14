@@ -71,6 +71,7 @@
     <Content Include="SubCategorie.aspx" />
     <Content Include="Web.config" />
     <Content Include="HomePage.aspx" />
+    <Content Include="WinkelWagen.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Inloggen.aspx.designer.cs">
       <DependentUpon>Inloggen.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Lijst.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Producten.aspx.cs">
       <DependentUpon>Producten.aspx</DependentUpon>
@@ -136,6 +138,14 @@
       <DependentUpon>SubCategorie.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubCategoriee.cs" />
+    <Compile Include="WinkelWagen.aspx.cs">
+      <DependentUpon>WinkelWagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WinkelWagen.aspx.designer.cs">
+      <DependentUpon>WinkelWagen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Winkelwagen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
@@ -146,6 +156,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

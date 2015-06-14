@@ -27,11 +27,11 @@
                          <br /><br />
                         <asp:Label ID="lblWachtwoord" runat="server" Text="Wachtwoord: "></asp:Label>
                         <br /><br />
-                        <asp:TextBox ID="tbWachtwoord" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
                          <br /><br />
                         <asp:Label ID="lblReWachtwoord" runat="server" Text="Re Wachtworod: "></asp:Label>
                         <br /><br />
-                        <asp:TextBox ID="tbReWachtwoord" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbReWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
                         <br /><br />
                         <asp:Label ID="lblNieuwsbrief" runat="server" Text="Nieuwsbrief: "></asp:Label>
                         <asp:RadioButtonList ID="rbNieuwsbrief" runat="server">
@@ -48,7 +48,7 @@
                          <br /><br />
                         <asp:Label ID="lblInlogWachtwoord" runat="server" Text="Wachtwoord: "></asp:Label>
                         <br /><br />
-                        <asp:TextBox ID="tbInlogWachtwoord" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbInlogWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
                         <br /><br />
                         <asp:Button ID="btnInloggen" runat="server" Text="Inloggen" OnClick="btnInloggen_Click" />
                     </div>

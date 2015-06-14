@@ -40,7 +40,7 @@ header h1{
 }
 
     .headerbar ul li {
-        width: 110px;
+        width: 110px; /*110*/
         height: 18px;
         float: left;
         display: inline-block;

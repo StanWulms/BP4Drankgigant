@@ -14,6 +14,7 @@ namespace BP4DrankGigant
 {
     public partial class Producten : System.Web.UI.Page
     {
+        List<Product> producten = new List<Product>();
         protected void Page_Load(object sender, EventArgs e)
         {
             string subcategorieID = (string)Session["subcategorie"];
@@ -38,6 +39,7 @@ namespace BP4DrankGigant
                 {
                     //dropdownmenu
                     // lbItems.Items.Clear();
+                    
 
                     while (reader.Read())
                     {
@@ -53,6 +55,9 @@ namespace BP4DrankGigant
                         ButtonChange.Click += new EventHandler(btn_Click);
                         
                         Panel1.Controls.Add(ButtonChange);
+
+                        Product p = new Product(reader[0].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader.GetInt32(7));
+                        producten.Add(p);
                         
                     }
                 }

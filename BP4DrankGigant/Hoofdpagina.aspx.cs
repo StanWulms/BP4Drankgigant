@@ -21,6 +21,14 @@ namespace BP4DrankGigant
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if((String)Session["Inlog"] == "Y")
+            {
+                string user = (String)Session["User"];
+                Label labelNaam = new Label();
+                labelNaam.Text = "<br /> " + "U bent ingelogd" + "<br /><br />";
+                labelNaam.ID = user;
+                Panel1.Controls.Add(labelNaam);
+            }
             h = new Helper();
             c = new Categorie();
             Session["Categorie"] = c;

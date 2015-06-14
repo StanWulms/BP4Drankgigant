@@ -13,7 +13,7 @@
     <form id="form1" runat="server">
      <div class="wrapper">
       <header style="background-color:#B22222;">
-         <div class="headerbar">
+         <div id="headbar" class="headerbar" runat="server">
             <ul>
                 <li><a>Mijn verlanglijst</a></li>
                 <li><a href="Inloggen.aspx">Inloggen</a></li>
@@ -23,6 +23,7 @@
                   <h1>  </h1>
         <div class="pic">
             <!-- Div voor het plaatje, deze staat in de Css File -->
+            <asp:ImageButton ID="HeaderImage" runat="server" ImageUrl="~/Images/DGLogo.jpg" OnClick="HeaderImage_Click1" Height="89px" Width="934px" /> 
         </div>
  
 
