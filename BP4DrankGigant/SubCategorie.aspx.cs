@@ -19,6 +19,7 @@ namespace BP4DrankGigant
         {
             string categorienaam = (string)Session["categorie"];
             sc = new SubCategoriee();
+            //Haal de juiste subcategorie op.
             sc.getSubCat();
             foreach (SubCategoriee subcat in sc.categorieen)
             {
@@ -34,54 +35,8 @@ namespace BP4DrankGigant
 
                 Panel1.Controls.Add(ButtonChange); 
             }
-
-            
-            
-            
-            
-            
-            
-            //
-            /*using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
-            {
-                if (con == null)
-                {
-                    //return "Error! No Connection";
-                }
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
-                con.Open();
-                DbCommand com = OracleClientFactory.Instance.CreateCommand();
-                if (com == null)
-                {
-                    //return "Error! No Command";
-                }
-                com.Connection = con;
-                com.CommandText = "SELECT categorienaam, categorieID FROM CATEGORIE WHERE supercategorienaam = '" + categorienaam + "'";
-                DbDataReader reader = com.ExecuteReader();
-                try
-                {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
-
-                    while (reader.Read())
-                    {
-
-
-
-                    }
-                }
-                catch (NullReferenceException)
-                {
-
-                }
-            }*/
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Session["terug"] = "terug";
-            Response.Redirect("Hoofdpagina.aspx");
-        }
         public void btn_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;

@@ -25,6 +25,7 @@ namespace BP4DrankGigant
             categorien.Add(c);
         }
 
+        //Het maximale ID opvragen om te voorkomen dat dubbele ID's geinsert worden.
         public int getMaXID(string query)
         {
             //Fields
@@ -49,25 +50,18 @@ namespace BP4DrankGigant
                 try
                 {
                     reader.Read();
-                    /// <summary>
-                    /// Ik return de maximum van het ID en tel daar 1 bij op.
-                    /// Zo kan ik INSERT statements aanroepen zonder bang te zijn een dubbele primary key te krijgen
-                    /// </summary>
-                    /// 
-                   // maxid = Convert.ToInt32(reader.GetString(0));
                     maxid = reader.GetInt32(0);
                     maxid++;
                     reader.Close();
-                    return maxid;
-                    
+                    return maxid;  
                 }
                 catch (NullReferenceException)
                 {
                     return -1;
-
                 }
             }
         }
+        //Het opvragen van het lijstID
         public string getLijstID(string query)
         {
             string lijstID;
@@ -91,13 +85,7 @@ namespace BP4DrankGigant
                 {
                     reader.Read();
                     /// <summary>
-                    /// Ik return de maximum van het ID en tel daar 1 bij op.
-                    /// Zo kan ik INSERT statements aanroepen zonder bang te zijn een dubbele primary key te krijgen
-                    /// </summary>
-                    /// 
-                    // maxid = Convert.ToInt32(reader.GetString(0));
                     lijstID = reader.GetString(0);
-                    // maxid++;
                     reader.Close();
                     return lijstID;
 
@@ -105,7 +93,6 @@ namespace BP4DrankGigant
                 catch (NullReferenceException)
                 {
                     return "-1";
-
                 }
             }
         }

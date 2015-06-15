@@ -26,7 +26,7 @@
             <asp:ImageButton ID="HeaderImage" runat="server" ImageUrl="~/Images/DGLogo.jpg" OnClick="HeaderImage_Click1" Height="89px" Width="934px" /> 
         </div>
  
-
+          <!-- Hierdoor blijft de layout goed staan, dit is eigenlijk overbodig -->
         <nav>
         <ul>
             <li><a>  </a></li>

@@ -18,10 +18,10 @@ namespace BP4DrankGigant
         List<Account> accounts = new List<Account>();
         string gebruikersnaam;
         string wachtwoord;
-        int maxid;
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Alle accounts uit de database ophalen. Hierdoor is het later niet mogelijk om SQL-injections te doen.
                 using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
                 {
                     if (con == null)
@@ -40,15 +40,10 @@ namespace BP4DrankGigant
                     DbDataReader reader = com.ExecuteReader();
                     try
                     {
-                        //dropdownmenu
-                        // lbItems.Items.Clear();
-
                         while (reader.Read())
                         {
                             a = new Account(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
-                            //a.accounts.Add(a);
                             accounts.Add(a);
-
                         }
                     }
                     catch (NullReferenceException)
@@ -56,7 +51,6 @@ namespace BP4DrankGigant
 
                     }
                 }
-            
         }
 
         protected void btnAccountMaken_Click(object sender, EventArgs e)

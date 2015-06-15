@@ -36,10 +36,6 @@ namespace BP4DrankGigant
             Session["Categorie"] = c;
             //
             c.getSubCat();
-            
-          //  ContentDiv.InnerHtml += "<div id=" + "lijst" + "><ul class=" + "categorielijst" + ">";
-           // ContentDiv.InnerHtml += "<li><a class=" + "catsdogs" + "href=" + "SubCategorie.aspx" + ">" + reader[0].ToString() + "</a></li>";
-           // ContentDiv.InnerHtml += "</ul></div>";
 
             foreach (Categorie cat in c.categorieen)
             {
@@ -55,55 +51,6 @@ namespace BP4DrankGigant
 
                 Panel1.Controls.Add(ButtonChange);
             }
-
-
-            /*using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
-            {
-                if (con == null)
-                {
-                    //return "Error! No Connection";
-                }
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
-                con.Open();
-                DbCommand com = OracleClientFactory.Instance.CreateCommand();
-                if (com == null)
-                {
-                    //return "Error! No Command";
-                }
-                com.Connection = con;
-                com.CommandText = "SELECT categorienaam FROM CATEGORIE WHERE supercategorienaam IS NULL";
-                DbDataReader reader = com.ExecuteReader();
-                try
-                {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
-
-                    while (reader.Read())
-                    {
-
-                        ContentDiv.InnerHtml += "<div id=" + "lijst" + "><ul class=" + "categorielijst" + ">";
-                        ContentDiv.InnerHtml += "<li><a class=" + "catsdogs" + "href=" + "SubCategorie.aspx"+">" +reader[0].ToString() + "</a></li>";
-                        ContentDiv.InnerHtml += "</ul></div>";
-
-                        Button ButtonChange = new Button();
-                        ButtonChange.Height= 100;
-                        ButtonChange.Width = 100;
-                        
-                        ButtonChange.Text = reader[0].ToString();
-                        ButtonChange.ID = reader[0].ToString();
-                        ButtonChange.Font.Size = FontUnit.Point(7);
-                        ButtonChange.ControlStyle.CssClass = "button";
-                        ButtonChange.Click += new EventHandler(btn_Click);
-                        
-                        Panel1.Controls.Add(ButtonChange);
-
-                    }
-                }
-                catch (NullReferenceException)
-                {
-
-                }
-            }*/
         }
 
         protected void btnSterkeDrank_Click(object sender, EventArgs e)
@@ -123,6 +70,5 @@ namespace BP4DrankGigant
             Session["categorie"] = button.ID;
             Response.Redirect("SubCategorie.aspx");
         }
-
     }
 }

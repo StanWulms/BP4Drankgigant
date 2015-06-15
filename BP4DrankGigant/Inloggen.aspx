@@ -41,7 +41,7 @@
                         <asp:RegularExpressionValidator runat="server" ControlToValidate="tbReWachtwoord"  ErrorMessage="ID must be 1-25 letters." ValidationExpression="[\S]{1,25}" ValidationGroup="AllValidators" />
                         <asp:TextBox ID="tbReWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
                         <br />
-                        <asp:CompareValidator runat="server" ControlToValidate=tbWachtwoord ControlToCompare=tbReWachtwoord ErrorMessage="Passwords do not match." ValidationGroup="AllValidators" />
+                        <asp:CompareValidator runat="server" ControlToValidate="tbWachtwoord" ControlToCompare="tbReWachtwoord" ErrorMessage="Passwords do not match." ValidationGroup="AllValidators" />
                         <br />
                         <asp:Label ID="lblNieuwsbrief" runat="server" Text="Nieuwsbrief: "></asp:Label>
                         <asp:RadioButtonList ID="rbNieuwsbrief" runat="server">

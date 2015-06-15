@@ -11,11 +11,9 @@ namespace BP4DrankGigant
 {
     public class SubCategoriee
     {
-        //List<SubCategoriee> categorieen;
         public String Naam { get; set; }
         public String ID { get; set; }
         public List<SubCategoriee> categorieen { get; set; }
-       // public String Categorie { get; set; }
 
         public SubCategoriee()
         {
@@ -50,8 +48,6 @@ namespace BP4DrankGigant
                 DbDataReader reader = com.ExecuteReader();
                 try
                 {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
                     SubCategoriee sc;
                     while (reader.Read())
                     {

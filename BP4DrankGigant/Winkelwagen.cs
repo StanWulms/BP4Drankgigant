@@ -9,8 +9,6 @@ namespace BP4DrankGigant
     {
         public List<Product> winkelwagenproducten { get; set; }
 
-        List<Product> winkelwagenlijst;
-
         public Winkelwagen()
         {
 

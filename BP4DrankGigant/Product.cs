@@ -20,10 +20,6 @@ namespace BP4DrankGigant
         public List<Product> producten { get; set; }
         public List<Product> producteninfo { get; set; }
 
-        //List<Categorie> categorieen;
-        //List<SubCategorie> subcategorieen;
-        //List<Product> winkelwagenlijst;
-
         public Product(string naam,String inhoud, String alcoholpercentage, string merk, string land, int prijs)
         {
             this.Naam = naam;
@@ -67,8 +63,6 @@ namespace BP4DrankGigant
                 DbDataReader reader = com.ExecuteReader();
                 try
                 {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
                     Product p;
                     while (reader.Read())
                     {
@@ -104,8 +98,6 @@ namespace BP4DrankGigant
                 DbDataReader reader = com.ExecuteReader();
                 try
                 {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
                     Product p;
                     while (reader.Read())
                     {
@@ -119,7 +111,5 @@ namespace BP4DrankGigant
                 }
             }
         }
-
-
     }
 }

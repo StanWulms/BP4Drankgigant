@@ -62,8 +62,6 @@ namespace BP4DrankGigant
                 DbDataReader reader = com.ExecuteReader();
                 try
                 {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
                     Categorie c;
                     while (reader.Read())
                     {

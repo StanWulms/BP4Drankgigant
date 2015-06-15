@@ -73,11 +73,9 @@ namespace BP4DrankGigant
                         //return "Error! No Command";
                     }
                     com.Connection = con;
-                    //  com.CommandText = "SELECT * FROM Account";
                     OracleCommand cmd = (OracleCommand)con.CreateCommand();
                     try
                     {
-
                         cmd.Parameters.Add("email", email);
                         cmd.Parameters.Add("titel", titel);
                         cmd.Parameters.Add("voornaam",voornaam);
@@ -87,7 +85,6 @@ namespace BP4DrankGigant
                         cmd.Parameters.Add("nieuwsbrief",nieuwsbrief);
                         OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
                           cmd.CommandText = "INSERT INTO ACCOUNT (Email,Titel,Voornaam,Achternaam,Btwnummer,Wachtwoord,Nieuwsbrief) VALUES ('" + @email + "','" + @titel + "','" + @voornaam + "','" + @achternaam + "','" + @btwnummer + "','" + @wachtwoord + "','" + @nieuwsbrief + "')";
-                          //cmd.CommandText = "INSERT INTO ACCOUNT (Email,Titel,Voornaam,Achternaam,Btwnummer,Wachtwoord,Nieuwsbrief) VALUES ('" + email + "','" + titel + "','" + voornaam + "','" + achternaam + "','" + btwnummer + "','" + wachtwoord + "','" + nieuwsbrief + "')";
                         cmd.ExecuteNonQuery();
                         otn.Commit();
 
@@ -96,20 +93,12 @@ namespace BP4DrankGigant
                         cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + maxid.ToString() + "','" + @email + "','" + "Winkelwagen" + "')";
                         cmd.ExecuteNonQuery();
                         otn2.Commit();
-                        //dropdownmenu
-                        // lbItems.Items.Clear();
-
-                        
-
-
                     }
                     catch (NullReferenceException)
                     {
 
                     }
-                }
-
-                
+                } 
             }
             else
             {
