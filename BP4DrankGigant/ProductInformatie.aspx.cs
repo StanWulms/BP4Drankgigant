@@ -113,6 +113,10 @@ namespace BP4DrankGigant
                                 Response.Redirect("Hoofdpagina.aspx");
                             }
                         }
+                        catch
+                        {
+                            
+                        }
                         otn.Commit();
                     }
                     else
@@ -130,6 +134,10 @@ namespace BP4DrankGigant
                     cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + (1+1).ToString() + "','" + (String)Session["Username"] + "','" + "Winkelwagen" + "')";
                     cmd.ExecuteNonQuery();
                     otn.Commit();
+                }
+                catch
+                {
+                    
                 }
             }
             Response.Redirect("WinkelWagen.aspx");

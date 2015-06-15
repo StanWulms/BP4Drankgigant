@@ -98,6 +98,10 @@ namespace BP4DrankGigant
                     {
 
                     }
+                    catch
+                    {
+                       
+                    }
                 } 
             }
             else

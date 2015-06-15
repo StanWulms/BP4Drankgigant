@@ -94,6 +94,10 @@ namespace BP4DrankGigant
                 {
                     return "-1";
                 }
+                catch
+                {
+                    return "-1";
+                }
             }
         }
     }

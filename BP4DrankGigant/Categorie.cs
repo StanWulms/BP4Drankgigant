@@ -73,6 +73,10 @@ namespace BP4DrankGigant
                 {
 
                 }
+                catch
+                {
+                    
+                }
             }
         }
     }

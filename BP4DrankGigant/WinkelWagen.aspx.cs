@@ -14,7 +14,6 @@ namespace BP4DrankGigant
     public partial class WinkelWagen : System.Web.UI.Page
     {
         Winkelwagen winkelwagen = new Winkelwagen();
-        List<Product> winkelwagenlijst;
         Helper h = new Helper();
         
         protected void Page_Load(object sender, EventArgs e)
@@ -56,6 +55,10 @@ namespace BP4DrankGigant
                     catch (NullReferenceException)
                     {
 
+                    }
+                    catch
+                    {
+                       
                     }
                 }
             }
