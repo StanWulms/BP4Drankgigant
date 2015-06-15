@@ -37,11 +37,6 @@ namespace BP4DrankGigant
             producteninfo = new List<Product>();
         }
 
-        public void Zoeken(string naam)
-        {
-            
-        }
-
         public void getProduct()
         {
             string subcategorieID = (String)System.Web.HttpContext.Current.Session["subcategorie"];

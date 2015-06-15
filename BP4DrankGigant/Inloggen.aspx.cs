@@ -52,7 +52,7 @@ namespace BP4DrankGigant
                     }
                     catch
                     {
-                        return "-1";
+                        
                     }
                 }
         }
@@ -78,7 +78,6 @@ namespace BP4DrankGigant
         protected void btnInloggen_Click(object sender, EventArgs e)
         {
             //Het is hier niet mogelijk om SQL-injections te krijgen, omdat ik de list vergelijk met het ingevulde.
-            //Roep de methode van de klasse Account aan ipv dit.
             gebruikersnaam = tbInlogEmail.Text;
             wachtwoord = tbInlogWachtwoord.Text;
             foreach (Account a in accounts)
@@ -88,7 +87,7 @@ namespace BP4DrankGigant
                     //Sessie om de username te onthouden en om te onthouden of er ingelogd is.
                     Session["Username"] = gebruikersnaam;
                     Session["Inlog"] = "Y";
-                    //MessageBox
+                    //Pop-Up
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('U bent ingelogd.');</script>");
                     //Na het inloggen komt men altijd terug op de hoofdpagina.
                     Response.Redirect("Hoofdpagina.aspx");
