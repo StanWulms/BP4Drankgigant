@@ -40,6 +40,15 @@ namespace BP4DrankGigant {
         protected global::System.Web.UI.WebControls.DropDownList ddlTitel;
         
         /// <summary>
+        /// rfvVoornaam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVoornaam;
+        
+        /// <summary>
         /// lblVoornaam control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace BP4DrankGigant {
         protected global::System.Web.UI.WebControls.TextBox tbVoornaam;
         
         /// <summary>
+        /// rfvAchternaam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAchternaam;
+        
+        /// <summary>
         /// lblAchternaam control.
         /// </summary>
         /// <remarks>
@@ -74,6 +92,15 @@ namespace BP4DrankGigant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbAchternaam;
+        
+        /// <summary>
+        /// rfvEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
         
         /// <summary>
         /// lblEmail control.
@@ -103,6 +130,15 @@ namespace BP4DrankGigant {
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
         
         /// <summary>
+        /// rfvWachtwoord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvWachtwoord;
+        
+        /// <summary>
         /// lblWachtwoord control.
         /// </summary>
         /// <remarks>
@@ -119,6 +155,15 @@ namespace BP4DrankGigant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbWachtwoord;
+        
+        /// <summary>
+        /// rfvReWachtwoord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvReWachtwoord;
         
         /// <summary>
         /// lblReWachtwoord control.
