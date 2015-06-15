@@ -61,71 +61,19 @@ namespace BP4DrankGigant
 
         protected void btnAccountMaken_Click(object sender, EventArgs e)
         {
+            //Kijken of alle velden naar behoren ingevuld zijn.
             Page.Validate("AllValidators");
             if (Page.IsValid)
-            {
-            
-            a.Aanmaken(tbEmail.Text, ddlTitel.SelectedValue, tbVoornaam.Text, tbAchternaam.Text, "NL1324576809", tbWachtwoord.Text, tbReWachtwoord.Text, rbNieuwsbrief.SelectedValue);
-            Session["Inlog"] = "Y";
-            Response.Redirect("Hoofdpagina.aspx");
-                    /*if (tbWachtwoord.Text == tbReWachtwoord.Text)
-                {
-                    using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
-                    {
-                        if (con == null)
-                        {
-                            //return "Error! No Connection";
-                        }
-                        con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
-                        con.Open();
-                        DbCommand com = OracleClientFactory.Instance.CreateCommand();
-                        if (com == null)
-                        {
-                            //return "Error! No Command";
-                        }
-                        com.Connection = con;
-                        //  com.CommandText = "SELECT * FROM Account";
-                        OracleCommand cmd = (OracleCommand)con.CreateCommand();
-                        try
-                        {
-                            OracleTransaction otn = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
-                            cmd.CommandText = "INSERT INTO ACCOUNT (Email,Titel,Voornaam,Achternaam,Btwnummer,Wachtwoord,Nieuwsbrief) VALUES ('" + tbEmail.Text + "','" + ddlTitel.SelectedValue + "','" + tbVoornaam.Text + "','" + tbAchternaam.Text + "','" + "NL12349921" + "','" + tbWachtwoord.Text + "','" + rbNieuwsbrief.SelectedValue + "')";
-                            cmd.ExecuteNonQuery();
-                            otn.Commit();
-
-                            maxid = h.getMaXID("SELECT COUNT(LijstID) FROM LIJST");
-                            OracleTransaction otn2 = (OracleTransaction)con.BeginTransaction(IsolationLevel.ReadCommitted);
-                            cmd.CommandText = "INSERT INTO LIJST (LijstID, Email, lijsttype) VALUES ('" + maxid.ToString() + "','" + tbEmail.Text + "','" + "Winkelwagen" + "')";
-                            cmd.ExecuteNonQuery();
-                            otn2.Commit();
-                            //dropdownmenu
-                            // lbItems.Items.Clear();
-
-                            Session["Inlog"] = "Y";
-
-
-                        }
-                        catch (NullReferenceException)
-                        {
-
-                        }
-                    }
-                    
-                    Response.Redirect("Hoofdpagina.aspx");
-                }
-                else
-                {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Wachtwoorden komen niet overeen!');</script>");
-                }*/
+            { 
+                a.Aanmaken(tbEmail.Text, ddlTitel.SelectedValue, tbVoornaam.Text, tbAchternaam.Text, "NL1324576809", tbWachtwoord.Text, tbReWachtwoord.Text, rbNieuwsbrief.SelectedValue);
+                Session["Inlog"] = "Y";
+                Response.Redirect("Hoofdpagina.aspx");
             }
+            //Als de velden niet goed ingevuld zijn, laat een tekst zien.
             else
             {
-               // Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Niet alle velden zijn correct.');</script>");
-                
                 lblError.Text = "Sommige velden zijn niet correct ingevuld.";
-                lblError.ForeColor = System.Drawing.Color.Red;
-                
-                
+                lblError.ForeColor = System.Drawing.Color.Red;    
             }
         }
 
@@ -139,14 +87,17 @@ namespace BP4DrankGigant
             {
                 if(a.Email == gebruikersnaam && a.Wachtwoord == wachtwoord)
                 {
+                    //Sessie om de username te onthouden en om te onthouden of er ingelogd is.
                     Session["Username"] = gebruikersnaam;
-                    Session["Password"] = wachtwoord;
                     Session["Inlog"] = "Y";
+                    //MessageBox
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('U bent ingelogd.');</script>");
+                    //Na het inloggen komt men altijd terug op de hoofdpagina.
                     Response.Redirect("Hoofdpagina.aspx");
                 }
                 else
                 {
+                    //Pop-up als het email adres niet overeenkomt met het wachtwoord.
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Verkeerde email/wachtwoord. Probeer het opnieuw.');</script>");
                     tbInlogEmail.Text = "";
                     tbInlogWachtwoord.Text = "";
