@@ -33,12 +33,12 @@
                         <br /><br />
                         <asp:RequiredFieldValidator ID="rfvWachtwoord" runat="server" ControlToValidate="tbWachtwoord" Display="Dynamic" ErrorMessage="Wachtwoord is verplicht." ForeColor="Red" ValidationGroup="AllValidators">*</asp:RequiredFieldValidator>
                         <asp:Label ID="lblWachtwoord" runat="server" Text="Wachtwoord: "></asp:Label>
-                        <asp:RegularExpressionValidator runat="server" ControlToValidate="tbWachtwoord"  ErrorMessage="ID must be 1-25 letters." ValidationExpression="[a-zA-Z]{1,25}" ValidationGroup="AllValidators" />
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="tbWachtwoord"  ErrorMessage="ID must be 1-25 letters." ValidationExpression="[\S]{1,25}" ValidationGroup="AllValidators" />
                         <asp:TextBox ID="tbWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
                          <br /><br />
                         <asp:RequiredFieldValidator ID="rfvReWachtwoord" runat="server" ControlToValidate="tbReWachtwoord" Display="Dynamic" ErrorMessage="RE wachtwoord is verplicht." ForeColor="Red" ValidationGroup="AllValidators">*</asp:RequiredFieldValidator>
                         <asp:Label ID="lblReWachtwoord" runat="server" Text="Re Wachtworod: "></asp:Label>
-                        <asp:RegularExpressionValidator runat="server" ControlToValidate="tbReWachtwoord"  ErrorMessage="ID must be 1-25 letters." ValidationExpression="[a-zA-Z]{1,25}" ValidationGroup="AllValidators" />
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="tbReWachtwoord"  ErrorMessage="ID must be 1-25 letters." ValidationExpression="[\S]{1,25}" ValidationGroup="AllValidators" />
                         <asp:TextBox ID="tbReWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
                         <br />
                         <asp:CompareValidator runat="server" ControlToValidate=tbWachtwoord ControlToCompare=tbReWachtwoord ErrorMessage="Passwords do not match." ValidationGroup="AllValidators" />
@@ -54,14 +54,20 @@
                         <asp:Label ID="lblError" runat="server" Text="Text"></asp:Label>
                     </div>
                     <div id="AccountInloggen">
+                        <asp:RequiredFieldValidator ID="rfvInlogEmail" runat="server" ControlToValidate="tbInlogEmail" Display="Dynamic" ErrorMessage="Email is verplicht." ForeColor="Red" ValidationGroup="AllValidators">*</asp:RequiredFieldValidator>
                         <asp:Label ID="lblInlogEmail" runat="server" Text="Email: "></asp:Label>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid email."
+                            ControlToValidate="tbInlogEmail" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" ValidationGroup="AllValidators" />
                         <br /><br />
-                        <asp:TextBox ID="tbInlogEmail" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbInlogEmail" runat="server" ValidateRequestMode="Enabled"></asp:TextBox>
                          <br /><br />
+                        <asp:RequiredFieldValidator ID="rfvInlogWachtwoord" runat="server" ControlToValidate="tbInlogWachtwoord" Display="Dynamic" ErrorMessage="Email is verplicht." ForeColor="Red" ValidationGroup="AllValidators">*</asp:RequiredFieldValidator>
                         <asp:Label ID="lblInlogWachtwoord" runat="server" Text="Wachtwoord: "></asp:Label>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Invalid email."
+                            ControlToValidate="tbEmail" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" ValidationGroup="AllValidators" />
                         <br /><br />
-                        <asp:TextBox ID="tbInlogWachtwoord" runat="server" TextMode="Password"></asp:TextBox>
-                        <br /><br />
+                        <asp:TextBox ID="tbInlogWachtwoord" runat="server" ValidateRequestMode="Enabled"></asp:TextBox>
+
                         <asp:Button ID="btnInloggen" runat="server" Text="Inloggen" OnClick="btnInloggen_Click" />
                         
                     </div>

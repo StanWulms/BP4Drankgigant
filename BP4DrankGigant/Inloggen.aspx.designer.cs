@@ -220,6 +220,15 @@ namespace BP4DrankGigant {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
+        /// rfvInlogEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInlogEmail;
+        
+        /// <summary>
         /// lblInlogEmail control.
         /// </summary>
         /// <remarks>
@@ -227,6 +236,15 @@ namespace BP4DrankGigant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblInlogEmail;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// tbInlogEmail control.
@@ -238,6 +256,15 @@ namespace BP4DrankGigant {
         protected global::System.Web.UI.WebControls.TextBox tbInlogEmail;
         
         /// <summary>
+        /// rfvInlogWachtwoord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInlogWachtwoord;
+        
+        /// <summary>
         /// lblInlogWachtwoord control.
         /// </summary>
         /// <remarks>
@@ -245,6 +272,15 @@ namespace BP4DrankGigant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblInlogWachtwoord;
+        
+        /// <summary>
+        /// RegularExpressionValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
         /// tbInlogWachtwoord control.
