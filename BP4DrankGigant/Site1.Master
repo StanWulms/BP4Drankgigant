@@ -29,20 +29,20 @@
 
         <nav>
         <ul>
-            <li><a> Sterke Dranken</a></li>
+            <li><a>  </a></li>
                 <ul>
-                    <li>Absint</li>
-                    <li>Anijs</li>
-                    <li>Brandy</li>
-                    <li>Wodka</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
-            <li><a>Alcohol Vrij</a>
+            <li><a></a>
                 <ul>
-                    <li><a>Fanta</a></li>
-                    <li><a>Coca Cola</a></li>
+                    <li><a></a></li>
+                    <li><a></a></li>
                 </ul>
             </li>
-            <li><a>Lichte</a></li>
+            <li><a></a></li>
         </ul>
         </nav> 
           <div id="contentDiv" runat="server"></div>

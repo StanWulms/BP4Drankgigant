@@ -22,44 +22,46 @@ namespace BP4DrankGigant
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
-            {
-                if (con == null)
+                using (DbConnection con = OracleClientFactory.Instance.CreateConnection())
                 {
-                    //return "Error! No Connection";
-                }
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
-                con.Open();
-                DbCommand com = OracleClientFactory.Instance.CreateCommand();
-                if (com == null)
-                {
-                    //return "Error! No Command";
-                }
-                com.Connection = con;
-                com.CommandText = "SELECT * FROM Account";
-                DbDataReader reader = com.ExecuteReader();
-                try
-                {
-                    //dropdownmenu
-                    // lbItems.Items.Clear();
-
-                    while (reader.Read())
+                    if (con == null)
                     {
-                        a = new Account(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
-                        //a.accounts.Add(a);
-                        accounts.Add(a);
+                        //return "Error! No Connection";
+                    }
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectieStr"].ConnectionString;
+                    con.Open();
+                    DbCommand com = OracleClientFactory.Instance.CreateCommand();
+                    if (com == null)
+                    {
+                        //return "Error! No Command";
+                    }
+                    com.Connection = con;
+                    com.CommandText = "SELECT * FROM Account";
+                    DbDataReader reader = com.ExecuteReader();
+                    try
+                    {
+                        //dropdownmenu
+                        // lbItems.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            a = new Account(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+                            //a.accounts.Add(a);
+                            accounts.Add(a);
+
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
 
                     }
                 }
-                catch (NullReferenceException)
-                {
-
-                }
-            }
+            
         }
 
         protected void btnAccountMaken_Click(object sender, EventArgs e)
         {
+            Page.Validate("AllValidators");
             if (Page.IsValid)
             {
             
@@ -118,7 +120,12 @@ namespace BP4DrankGigant
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Vul een valide email in.');</script>");
+               // Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Niet alle velden zijn correct.');</script>");
+                
+                lblError.Text = "Sommige velden zijn niet correct ingevuld.";
+                lblError.ForeColor = System.Drawing.Color.Red;
+                
+                
             }
         }
 

@@ -48,9 +48,7 @@ header h1{
         cursor: pointer;
         background-color: #B22222;
     }
-    .headerbar ul li a:hover{
-        color:white;
-    }
+
 /*
     Vanaf hier
 */
@@ -68,7 +66,7 @@ nav ul{
 }
 
 nav ul li {
-        width: 110px;
+        width: 134.295px;
         height: 32px;
         float: left;
         display: inline-block;
@@ -87,9 +85,7 @@ nav ul li a
     display: block;
 }
 
-nav ul li a:hover{
-    background-color: #585656;
-}
+
 
 nav ul li ul{
     display:none;
@@ -100,12 +96,8 @@ nav ul li:hover ul{
 nav ul li ul li{
     text-align:left;
 }
-nav ul li ul li a:hover{
-    background-color:rgb(14,174,203);
-    color:white;
-    font-size:21px;
-}
-/*Tot hier*/
+
+
 .samp
 {
     width:550px;
